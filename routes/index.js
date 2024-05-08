@@ -3,3 +3,5 @@ const router = express.Router();
 const switchController = require('../controller/switchController');
 
 router.get('/', switchController.getAll);
+
+module.exports = router;

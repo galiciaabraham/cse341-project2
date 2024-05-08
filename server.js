@@ -3,8 +3,8 @@ const app = express();
 const port = process.env.PORT || 8080;
 const route = require('./routes');
 const bodyParser = require('body-parser');
-
 const mongodb = require('./model/dbConnection');
+
 app.use(bodyParser.json());
 app.use('/', route);
 
