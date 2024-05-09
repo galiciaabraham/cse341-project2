@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const switchController = require('../controller/switchController');
+const switchRoutes = require('./switchRoutes');
 
-router.get('/', switchController.getAll);
+router.use('/switch' , switchRoutes );
 
 module.exports = router;

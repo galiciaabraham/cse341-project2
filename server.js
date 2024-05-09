@@ -8,6 +8,10 @@ const mongodb = require('./model/dbConnection');
 app.use(bodyParser.json());
 app.use('/', route);
 
+app.use(async (err, req, res, next) => {
+  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  });
+
 mongodb.initDb((error) => {
   if (error) {
     console.log(error);
