@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 app.use('/', route);
 
 app.use(async (err, req, res, next) => {
+  res.send('Error while performing your request, please try again.');
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
   });
 

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const switchController = require('../controller/switchController');
+const errorHandler = require('../middleware/errorHandler');
 
-router.get('/', switchController.getAll);
-router.get('/:gameId', switchController.getOne);
+router.get('/',errorHandler.CatchErrors( switchController.getAll));
+router.get('/:gameId', errorHandler.CatchErrors( switchController.getOne));
 
 
 
