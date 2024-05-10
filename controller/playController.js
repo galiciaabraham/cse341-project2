@@ -26,7 +26,6 @@ playController.getOne = async (req, res) => {
   if (data.length < 1) {
     res.send('No data found for this id, please try again or contact an administrator');
     throw new Error('No data found for this id, please enter a valid id');
-    
   } else {
     res.setHeader('Content-Type', 'application/json');
     res.status(200);

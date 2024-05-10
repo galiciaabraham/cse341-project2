@@ -17,12 +17,7 @@ xboxController.getAll = async (req, res) => {
 
 xboxController.getOne = async (req, res) => {
   const gameId = new objectId(req.params.gameId);
-  const data = await mongodb
-    .getDb()
-    .db()
-    .collection('xbox_games')
-    .find({ _id: gameId })
-    .toArray();
+  const data = await mongodb.getDb().db().collection('xbox_games').find({ _id: gameId }).toArray();
   if (data.length < 1) {
     res.send('No data found for this id, please try again or contact an administrator');
     throw new Error('No data found for this id, please enter a valid id');
@@ -95,11 +90,7 @@ xboxController.updateGame = async (req, res) => {
 xboxController.deleteGame = async (req, res) => {
   const gameId = new objectId(req.params.gameId);
   try {
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection('xbox_games')
-      .deleteOne({ _id: gameId });
+    const response = await mongodb.getDb().db().collection('xbox_games').deleteOne({ _id: gameId });
     if (response.deletedCount > 0) {
       res.status(200).send(`Game _id ${gameId} has been deleted`);
     }
