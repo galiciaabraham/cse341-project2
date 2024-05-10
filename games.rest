@@ -13,7 +13,7 @@ onrender:  https://cse341-project2-gfhd.onrender.com/switch
 localhost: http://localhost:8080/switch/find/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
 onrender:  https://cse341-project2-gfhd.onrender.com/switch/find/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
 
-#ADD GAME:
+#ADD GAME - POST:
 localhost: http://localhost:8080/switch/new-game 
 onrender:  https://cse341-project2-gfhd.onrender.com/switch/new-game/
 
@@ -29,7 +29,7 @@ req.body:
     "Id": 4
   }
 
-#UPDATE ONE:
+#UPDATE ONE - PUT:
 localhost: http://localhost:8080/switch/update-game/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
 onrender:  https://cse341-project2-gfhd.onrender.com/switch/update-game/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
 
@@ -45,6 +45,6 @@ req.body:
     "Id": 4
   }
 
-#DELETE ONE:
+#DELETE ONE - DELETE:
 localhost: http://localhost:8080/switch/delete-game/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
 onrender:  https://cse341-project2-gfhd.onrender.com/switch/delete-game/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
