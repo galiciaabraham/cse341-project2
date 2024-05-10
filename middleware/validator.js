@@ -24,7 +24,7 @@ const validate = (req, res, next) => {
   }
   const errorList = [];
   errors.array().map((err) => errorList.push({ [err.param]: err.msg }));
-  return res.status(422).json({
+  return res.status(500).json({
     errors: errorList
   });
 };

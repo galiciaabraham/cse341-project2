@@ -55,7 +55,7 @@ playController.addGame = async (req, res) => {
     }
   } catch (error) {
     res
-      .status(422)
+      .status(500)
       .send(
         'Something went wrong while uploading your game, please try again or contact an administrator.'
       );
@@ -86,7 +86,7 @@ playController.updateGame = async (req, res) => {
     }
   } catch (error) {
     res
-      .status(422)
+      .status(500)
       .send(
         'Something went wrong while updating your game, please try again or contact an administrator.'
       );
