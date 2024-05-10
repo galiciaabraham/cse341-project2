@@ -1,10 +1,10 @@
 const mongodb = require('../model/dbConnection');
 const objectId = require('mongodb').ObjectId;
 
-let switchController = {};
+let playController = {};
 
-switchController.getAll = async (req, res) => {
-  let data = await mongodb.getDb().db().collection('switch_games').find().toArray();
+playController.getAll = async (req, res) => {
+  let data = await mongodb.getDb().db().collection('playstation_games').find().toArray();
   if (data.length < 1) {
     res.send('No data found for this collection, please try again or contact an administrator');
     throw new Error('No data found in this collection, please try again later');
@@ -15,17 +15,18 @@ switchController.getAll = async (req, res) => {
   }
 };
 
-switchController.getOne = async (req, res) => {
+playController.getOne = async (req, res) => {
   const gameId = new objectId(req.params.gameId);
   const data = await mongodb
     .getDb()
     .db()
-    .collection('switch_games')
+    .collection('playstation_games')
     .find({ _id: gameId })
     .toArray();
   if (data.length < 1) {
     res.send('No data found for this id, please try again or contact an administrator');
     throw new Error('No data found for this id, please enter a valid id');
+    
   } else {
     res.setHeader('Content-Type', 'application/json');
     res.status(200);
@@ -33,7 +34,7 @@ switchController.getOne = async (req, res) => {
   }
 };
 
-switchController.addGame = async (req, res) => {
+playController.addGame = async (req, res) => {
   const game = {
     Name: req.body.Name,
     Release: req.body.Release,
@@ -46,7 +47,7 @@ switchController.addGame = async (req, res) => {
   };
 
   try {
-    const response = await mongodb.getDb().db().collection('switch_games').insertOne({ game });
+    const response = await mongodb.getDb().db().collection('playstation_games').insertOne({ game });
     if (response.acknowledged) {
       res.setHeader('Content-Type', 'application/json');
       res.status(200);
@@ -61,7 +62,7 @@ switchController.addGame = async (req, res) => {
   }
 };
 
-switchController.updateGame = async (req, res) => {
+playController.updateGame = async (req, res) => {
   const gameId = new objectId(req.params.gameId);
   const game = {
     Name: req.body.Name,
@@ -78,7 +79,7 @@ switchController.updateGame = async (req, res) => {
     const response = await mongodb
       .getDb()
       .db()
-      .collection('switch_games')
+      .collection('playstation_games')
       .replaceOne({ _id: gameId }, game);
     if (response.modifiedCount > 0) {
       res.status(200).send('Game correctly updated');
@@ -92,13 +93,13 @@ switchController.updateGame = async (req, res) => {
   }
 };
 
-switchController.deleteGame = async (req, res) => {
+playController.deleteGame = async (req, res) => {
   const gameId = new objectId(req.params.gameId);
   try {
     const response = await mongodb
       .getDb()
       .db()
-      .collection('switch_games')
+      .collection('playstation_games')
       .deleteOne({ _id: gameId });
     if (response.deletedCount > 0) {
       res.status(200).send(`Game _id ${gameId} has been deleted`);
@@ -110,4 +111,4 @@ switchController.deleteGame = async (req, res) => {
   }
 };
 
-module.exports = switchController;
+module.exports = playController;
