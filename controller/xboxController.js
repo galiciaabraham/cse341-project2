@@ -44,7 +44,7 @@ xboxController.addGame = async (req, res) => {
     const response = await mongodb.getDb().db().collection('xbox_games').insertOne({ game });
     if (response.acknowledged) {
       res.setHeader('Content-Type', 'application/json');
-      res.status(200);
+      res.status(204);
       res.send(`Created game _id: "${response.insertedId}" in MongoDB`);
     }
   } catch (error) {
@@ -76,7 +76,7 @@ xboxController.updateGame = async (req, res) => {
       .collection('xbox_games')
       .replaceOne({ _id: gameId }, game);
     if (response.modifiedCount > 0) {
-      res.status(200).send('Game correctly updated');
+      res.status(204).send('Game correctly updated');
     }
   } catch (error) {
     res
@@ -92,7 +92,7 @@ xboxController.deleteGame = async (req, res) => {
   try {
     const response = await mongodb.getDb().db().collection('xbox_games').deleteOne({ _id: gameId });
     if (response.deletedCount > 0) {
-      res.status(200).send(`Game _id ${gameId} has been deleted`);
+      res.status(204).send(`Game _id ${gameId} has been deleted`);
     }
   } catch (error) {
     res

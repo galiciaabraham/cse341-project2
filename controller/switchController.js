@@ -49,7 +49,7 @@ switchController.addGame = async (req, res) => {
     const response = await mongodb.getDb().db().collection('switch_games').insertOne({ game });
     if (response.acknowledged) {
       res.setHeader('Content-Type', 'application/json');
-      res.status(200);
+      res.status(204);
       res.send(`Created game _id: "${response.insertedId}" in MongoDB`);
     }
   } catch (error) {
@@ -81,7 +81,7 @@ switchController.updateGame = async (req, res) => {
       .collection('switch_games')
       .replaceOne({ _id: gameId }, game);
     if (response.modifiedCount > 0) {
-      res.status(200).send('Game correctly updated');
+      res.status(204).send('Game correctly updated');
     }
   } catch (error) {
     res
@@ -101,7 +101,7 @@ switchController.deleteGame = async (req, res) => {
       .collection('switch_games')
       .deleteOne({ _id: gameId });
     if (response.deletedCount > 0) {
-      res.status(200).send(`Game _id ${gameId} has been deleted`);
+      res.status(204).send(`Game _id ${gameId} has been deleted`);
     }
   } catch (error) {
     res

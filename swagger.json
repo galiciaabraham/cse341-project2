@@ -47,7 +47,7 @@
       "post": {
         "description": "",
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the addition"
           },
           "500": {
@@ -68,7 +68,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the update"
           },
           "500": {
@@ -89,7 +89,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the deletion"
           },
           "500": {
@@ -136,7 +136,7 @@
       "post": {
         "description": "",
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the addition"
           },
           "500": {
@@ -157,7 +157,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the update"
           },
           "500": {
@@ -178,7 +178,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the deletion"
           },
           "500": {
@@ -225,7 +225,7 @@
       "post": {
         "description": "",
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the addition"
           },
           "500": {
@@ -246,7 +246,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the update"
           },
           "500": {
@@ -267,7 +267,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "You get a confirmation of the deletion"
           },
           "500": {
