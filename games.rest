@@ -1,0 +1,50 @@
+You can use the following links to test the API. 
+You can replace the "switch", "playstation" and "xbox" words to access each collection accordingly.
+
+#DOCUMENTATION 
+localhost: http://localhost:8080/
+onrender:  https://cse341-project2-gfhd.onrender.com/
+
+#GET ALL
+localhost: http://localhost:8080/switch
+onrender:  https://cse341-project2-gfhd.onrender.com/switch
+
+#GET ONE
+localhost: http://localhost:8080/switch/find/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
+onrender:  https://cse341-project2-gfhd.onrender.com/switch/find/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
+
+#ADD GAME:
+localhost: http://localhost:8080/switch/new-game 
+onrender:  https://cse341-project2-gfhd.onrender.com/switch/new-game/
+
+req.body:
+ {
+    "Name": "Forza Motorsport 10",
+    "Release": "2022",
+    "Director": "William Giese",
+    "Composer": "Scott Lee",
+    "Series": "Forza",
+    "Developer": "Turn 10 Studios",
+    "Genre": "Racing",
+    "Id": 4
+  }
+
+#UPDATE ONE:
+localhost: http://localhost:8080/switch/update-game/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
+onrender:  https://cse341-project2-gfhd.onrender.com/switch/update-game/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
+
+req.body:
+ {
+    "Name": "Forza Motorsport 10",
+    "Release": "2022",
+    "Director": "William Giese",
+    "Composer": "Scott Lee",
+    "Series": "Forza",
+    "Developer": "Turn 10 Studios",
+    "Genre": "Racing",
+    "Id": 4
+  }
+
+#DELETE ONE:
+localhost: http://localhost:8080/switch/delete-game/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
+onrender:  https://cse341-project2-gfhd.onrender.com/switch/delete-game/663aeef074bfe01c0e17f286 (playstation game _id: 663af04174bfe01c0e195349) (xbox game _id: 663d7155ebb2f33673ceba26)
