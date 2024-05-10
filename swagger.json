@@ -13,10 +13,13 @@
   "paths": {
     "/switch/": {
       "get": {
-        "description": "",
+        "description": "This GET route allows you to pull up all the switch games there are in the database",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "You get a JSON object with all the information from the collection"
+          },
+          "500": {
+            "description": "You get an error object, check the URL or contact support"
           }
         }
       }
@@ -33,8 +36,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a JSON object with all the information from that specific game Id"
+          },
+          "500": {
+            "description": "You get an error object, check the _id you used or contact support"
           }
         }
       }
@@ -43,8 +49,11 @@
       "post": {
         "description": "",
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the addition"
+          },
+          "500": {
+            "description": "You get an error object, check the validation rules or contact support"
           }
         }
       }
@@ -61,8 +70,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the update"
+          },
+          "500": {
+            "description": "You get an error object, check the validation rules or contact support"
           }
         }
       }
@@ -79,8 +91,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the deletion"
+          },
+          "500": {
+            "description": "You get an error object, check the _id and validation rules or contact support"
           }
         }
       }
@@ -89,8 +104,11 @@
       "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "You get a JSON object with all the information from the collection"
+          },
+          "500": {
+            "description": "You get an error object, check the URL or contact support"
           }
         }
       }
@@ -107,8 +125,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a JSON object with all the information from that specific game Id"
+          },
+          "500": {
+            "description": "You get an error object, check the _id you used or contact support"
           }
         }
       }
@@ -117,8 +138,11 @@
       "post": {
         "description": "",
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the addition"
+          },
+          "500": {
+            "description": "You get an error object, check the validation rules or contact support"
           }
         }
       }
@@ -135,8 +159,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the update"
+          },
+          "500": {
+            "description": "You get an error object, check the validation rules or contact support"
           }
         }
       }
@@ -153,8 +180,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the deletion"
+          },
+          "500": {
+            "description": "You get an error object, check the _id and validation rules or contact support"
           }
         }
       }
@@ -163,8 +193,11 @@
       "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "You get a JSON object with all the information from the collection"
+          },
+          "500": {
+            "description": "You get an error object, check the URL or contact support"
           }
         }
       }
@@ -181,8 +214,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a JSON object with all the information from that specific game Id"
+          },
+          "500": {
+            "description": "You get an error object, check the _id you used or contact support"
           }
         }
       }
@@ -191,8 +227,11 @@
       "post": {
         "description": "",
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the addition"
+          },
+          "500": {
+            "description": "You get an error object, check the validation rules or contact support"
           }
         }
       }
@@ -209,8 +248,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the update"
+          },
+          "500": {
+            "description": "You get an error object, check the validation rules or contact support"
           }
         }
       }
@@ -227,8 +269,11 @@
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
+          "200": {
+            "description": "You get a confirmation of the deletion"
+          },
+          "500": {
+            "description": "You get an error object, check the _id and validation rules or contact support"
           }
         }
       }
