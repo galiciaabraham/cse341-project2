@@ -6,7 +6,7 @@ const doc = {
     description:
       'This is an API that allows you to pull some information of games from the Nintentdo Switch, Playstation 4 and Xbox One consoles'
   },
-  host: 'localhost:8080'
+  host: 'https://cse341-project2-gfhd.onrender.com/'
 };
 
 const outputFile = './swagger.json';
