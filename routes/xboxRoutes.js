@@ -3,6 +3,8 @@ const router = express.Router();
 const xboxController = require('../controller/xboxController');
 const errorHandler = require('../middleware/errorHandler');
 const validator = require('../middleware/validator');
+const authenticator = require('../middleware/authentication');
+
 
 router.get('/', errorHandler.CatchErrors(xboxController.getAll));
 router.get(
@@ -14,6 +16,7 @@ router.get(
 
 router.post(
   '/new-game',
+  authenticator.checkAuth,
   validator.gameValidator(),
   validator.validate,
   errorHandler.CatchErrors(xboxController.addGame)
@@ -21,6 +24,7 @@ router.post(
 
 router.put(
   '/update-game/:gameId',
+  authenticator.checkAuth,
   validator.gameValidator(),
   validator.validate,
   errorHandler.CatchErrors(xboxController.updateGame)
@@ -28,6 +32,7 @@ router.put(
 
 router.delete(
   '/delete-game/:gameId',
+  authenticator.checkAuth,
   validator.gameSearchValidator(),
   validator.validate,
   errorHandler.CatchErrors(xboxController.deleteGame)
