@@ -9,9 +9,40 @@
   "basePath": "/",
   "schemes": ["https"],
   "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "This path will take you to the API documentation page",
+        "responses": {
+          "default": {
+            "description": "You'll see an UX interface created with Open API and Swagger"
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "description": "This route will trigger the login process with OAuth to obtain authorizaiton to POST, PUT and DELETE routes.",
+        "responses": {
+          "default": {
+            "description": "Once you're authenticated with your GitHub account you'll return to an empty page ready to answer to your requests."
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "This route will simply end your session",
+        "responses": {
+          "default": {
+            "description": "Once you're logged out you'll return to an empty page but your session has ended, you can only make GET requests from the database in this state if you wish to login again go to the /login route"
+          }
+        }
+      }
+    },
     "/switch/": {
       "get": {
         "description": "This GET route allows you to pull up all the switch games there are in the database",
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "You get a JSON object with all the information from the collection"
@@ -24,7 +55,8 @@
     },
     "/switch/find/{gameId}": {
       "get": {
-        "description": "",
+        "description": "This GET route allows you to pull up a specific switch game based in its _id",
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "gameId",
@@ -37,6 +69,9 @@
           "200": {
             "description": "You get a JSON object with all the information from that specific game Id"
           },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
+          },
           "500": {
             "description": "You get an error object, check the _id you used or contact support"
           }
@@ -45,10 +80,50 @@
     },
     "/switch/new-game": {
       "post": {
-        "description": "",
+        "description": "This POST route allows you to add a new game into the database",
+        "security": ["OAuth2"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "Game Name"
+                },
+                "Release": {
+                  "example": "2022"
+                },
+                "Director": {
+                  "example": "Director Name"
+                },
+                "Composer": {
+                  "example": "Composer Name"
+                },
+                "Series": {
+                  "example": "Series Name"
+                },
+                "Developer": {
+                  "example": "Developer Name"
+                },
+                "Genre": {
+                    "example": "Genre Name"
+                },
+                "Id": {
+                      "example": 4
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "You get a confirmation of the addition"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "You get an error object, check the validation rules or contact support"
@@ -58,18 +133,56 @@
     },
     "/switch/update-game/{gameId}": {
       "put": {
-        "description": "",
+        "description": "This PUT request allows you to edit an existing game",
+        "security": ["OAuth2"],
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "Game Name"
+                },
+                "Release": {
+                  "example": "2022"
+                },
+                "Director": {
+                  "example": "Director Name"
+                },
+                "Composer": {
+                  "example": "Composer Name"
+                },
+                "Series": {
+                  "example": "Series Name"
+                },
+                "Developer": {
+                  "example": "Developer Name"
+                },
+                "Genre": {
+                    "example": "Genre Name"
+                },
+                "Id": {
+                      "example": 4
+                }
+              }
+            }
           }
         ],
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "You get an error object, check the validation rules or contact support"
@@ -79,7 +192,8 @@
     },
     "/switch/delete-game/{gameId}": {
       "delete": {
-        "description": "",
+        "description": "This DELETE route allows you to delete an existing game",
+        "security": ["OAuth2"],
         "parameters": [
           {
             "name": "gameId",
@@ -92,6 +206,9 @@
           "204": {
             "description": "You get a confirmation of the deletion"
           },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
+          },
           "500": {
             "description": "You get an error object, check the _id and validation rules or contact support"
           }
@@ -100,7 +217,8 @@
     },
     "/playstation/": {
       "get": {
-        "description": "",
+        "description": "This GET route allows you to pull up all the playstation games there are in the database",
+        "produces": ["application/json"],
         "responses": {
           "204": {
             "description": "You get a JSON object with all the information from the collection"
@@ -113,7 +231,8 @@
     },
     "/playstation/find/{gameId}": {
       "get": {
-        "description": "",
+        "description": "This GET route allows you to pull up a specific playstation game based in its _id",
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "gameId",
@@ -134,10 +253,50 @@
     },
     "/playstation/new-game": {
       "post": {
-        "description": "",
+        "description": "This POST route allows you to add a new game into the database",
+        "security": ["OAuth2"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "Game Name"
+                },
+                "Release": {
+                  "example": "2022"
+                },
+                "Director": {
+                  "example": "Director Name"
+                },
+                "Composer": {
+                  "example": "Composer Name"
+                },
+                "Series": {
+                  "example": "Series Name"
+                },
+                "Developer": {
+                  "example": "Developer Name"
+                },
+                "Genre": {
+                    "example": "Genre Name"
+                },
+                "Id": {
+                      "example": 4
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "You get a confirmation of the addition"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "You get an error object, check the validation rules or contact support"
@@ -147,18 +306,56 @@
     },
     "/playstation/update-game/{gameId}": {
       "put": {
-        "description": "",
+        "description": "This PUT request allows you to edit an existing game",
+        "security": ["OAuth2"],
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "Game Name"
+                },
+                "Release": {
+                  "example": "2022"
+                },
+                "Director": {
+                  "example": "Director Name"
+                },
+                "Composer": {
+                  "example": "Composer Name"
+                },
+                "Series": {
+                  "example": "Series Name"
+                },
+                "Developer": {
+                  "example": "Developer Name"
+                },
+                "Genre": {
+                    "example": "Genre Name"
+                },
+                "Id": {
+                      "example": 4
+                }
+              }
+            }
           }
         ],
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "You get an error object, check the validation rules or contact support"
@@ -168,7 +365,8 @@
     },
     "/playstation/delete-game/{gameId}": {
       "delete": {
-        "description": "",
+        "description": "This DELETE route allows you to delete an existing game",
+        "security": ["OAuth2"],
         "parameters": [
           {
             "name": "gameId",
@@ -181,6 +379,9 @@
           "204": {
             "description": "You get a confirmation of the deletion"
           },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
+          },
           "500": {
             "description": "You get an error object, check the _id and validation rules or contact support"
           }
@@ -189,7 +390,8 @@
     },
     "/xbox/": {
       "get": {
-        "description": "",
+        "description": "This GET route allows you to pull up all the xbox games there are in the database",
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "You get a JSON object with all the information from the collection"
@@ -202,7 +404,8 @@
     },
     "/xbox/find/{gameId}": {
       "get": {
-        "description": "",
+        "description": "This GET route allows you to pull up a specific xbox game based in its _id",
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "gameId",
@@ -223,10 +426,56 @@
     },
     "/xbox/new-game": {
       "post": {
-        "description": "",
+        "description": "This POST route allows you to add a new game into the database",
+        "security": ["OAuth2"],
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "Game Name"
+                },
+                "Release": {
+                  "example": "2022"
+                },
+                "Director": {
+                  "example": "Director Name"
+                },
+                "Composer": {
+                  "example": "Composer Name"
+                },
+                "Series": {
+                  "example": "Series Name"
+                },
+                "Developer": {
+                  "example": "Developer Name"
+                },
+                "Genre": {
+                    "example": "Genre Name"
+                },
+                "Id": {
+                      "example": 4
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "You get a confirmation of the addition"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "You get an error object, check the validation rules or contact support"
@@ -236,18 +485,56 @@
     },
     "/xbox/update-game/{gameId}": {
       "put": {
-        "description": "",
+        "description": "This PUT request allows you to edit an existing game",
+        "security": ["OAuth2"],
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "Game Name"
+                },
+                "Release": {
+                  "example": "2022"
+                },
+                "Director": {
+                  "example": "Director Name"
+                },
+                "Composer": {
+                  "example": "Composer Name"
+                },
+                "Series": {
+                  "example": "Series Name"
+                },
+                "Developer": {
+                  "example": "Developer Name"
+                },
+                "Genre": {
+                    "example": "Genre Name"
+                },
+                "Id": {
+                      "example": 4
+                }
+              }
+            }
           }
         ],
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "You get an error object, check the validation rules or contact support"
@@ -257,7 +544,8 @@
     },
     "/xbox/delete-game/{gameId}": {
       "delete": {
-        "description": "",
+        "description": "This DELETE route allows you to delete an existing game",
+        "security": ["OAuth2"],
         "parameters": [
           {
             "name": "gameId",
@@ -269,6 +557,9 @@
         "responses": {
           "204": {
             "description": "You get a confirmation of the deletion"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "You get an error object, check the _id and validation rules or contact support"
