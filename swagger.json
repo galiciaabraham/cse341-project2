@@ -81,40 +81,19 @@
     "/switch/new-game": {
       "post": {
         "description": "This POST route allows you to add a new game into the database",
-        "security": ["OAuth2"],
+        "security": [ 
+          {
+          "OAuth2":[]
+          }
+        ], 
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
+            "description": "Example of req.body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "Game Name"
-                },
-                "Release": {
-                  "example": "2022"
-                },
-                "Director": {
-                  "example": "Director Name"
-                },
-                "Composer": {
-                  "example": "Composer Name"
-                },
-                "Series": {
-                  "example": "Series Name"
-                },
-                "Developer": {
-                  "example": "Developer Name"
-                },
-                "Genre": {
-                    "example": "Genre Name"
-                },
-                "Id": {
-                      "example": 4
-                }
-              }
+              "$ref": "#/definitions/game"
             }
           }
         ],
@@ -134,49 +113,25 @@
     "/switch/update-game/{gameId}": {
       "put": {
         "description": "This PUT request allows you to edit an existing game",
-        "security": ["OAuth2"],
+        "security": {
+          "OAuth2":[]
+        },
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "Game Name"
-                },
-                "Release": {
-                  "example": "2022"
-                },
-                "Director": {
-                  "example": "Director Name"
-                },
-                "Composer": {
-                  "example": "Composer Name"
-                },
-                "Series": {
-                  "example": "Series Name"
-                },
-                "Developer": {
-                  "example": "Developer Name"
-                },
-                "Genre": {
-                    "example": "Genre Name"
-                },
-                "Id": {
-                      "example": 4
-                }
-              }
-            }
           }
         ],
+        "requestBody":{
+          "description": "Example of req.body",
+          "required": "true",
+          "content": "application/json",
+          "schema":{
+            "$ref": "#/components/schemas/game"
+          }
+        },
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
@@ -193,7 +148,9 @@
     "/switch/delete-game/{gameId}": {
       "delete": {
         "description": "This DELETE route allows you to delete an existing game",
-        "security": ["OAuth2"],
+        "security": {
+          "OAuth2":[]
+        },
         "parameters": [
           {
             "name": "gameId",
@@ -254,43 +211,17 @@
     "/playstation/new-game": {
       "post": {
         "description": "This POST route allows you to add a new game into the database",
-        "security": ["OAuth2"],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "Game Name"
-                },
-                "Release": {
-                  "example": "2022"
-                },
-                "Director": {
-                  "example": "Director Name"
-                },
-                "Composer": {
-                  "example": "Composer Name"
-                },
-                "Series": {
-                  "example": "Series Name"
-                },
-                "Developer": {
-                  "example": "Developer Name"
-                },
-                "Genre": {
-                    "example": "Genre Name"
-                },
-                "Id": {
-                      "example": 4
-                }
-              }
-            }
+        "security": {
+          "OAuth2":[]
+        },
+        "requestBody":{
+          "description": "Example of req.body",
+          "required": "true",
+          "content": "application/json",
+          "schema":{
+            "$ref": "#/components/schemas/game"
           }
-        ],
+        },
         "responses": {
           "204": {
             "description": "You get a confirmation of the addition"
@@ -307,49 +238,25 @@
     "/playstation/update-game/{gameId}": {
       "put": {
         "description": "This PUT request allows you to edit an existing game",
-        "security": ["OAuth2"],
+        "security": {
+          "OAuth2":[]
+        },
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "Game Name"
-                },
-                "Release": {
-                  "example": "2022"
-                },
-                "Director": {
-                  "example": "Director Name"
-                },
-                "Composer": {
-                  "example": "Composer Name"
-                },
-                "Series": {
-                  "example": "Series Name"
-                },
-                "Developer": {
-                  "example": "Developer Name"
-                },
-                "Genre": {
-                    "example": "Genre Name"
-                },
-                "Id": {
-                      "example": 4
-                }
-              }
-            }
           }
         ],
+        "requestBody":{
+          "description": "Example of req.body",
+          "required": "true",
+          "content": "application/json",
+          "schema":{
+            "$ref": "#/components/schemas/game"
+          }
+        },
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
@@ -366,7 +273,9 @@
     "/playstation/delete-game/{gameId}": {
       "delete": {
         "description": "This DELETE route allows you to delete an existing game",
-        "security": ["OAuth2"],
+        "security": {
+          "OAuth2":[]
+        },
         "parameters": [
           {
             "name": "gameId",
@@ -427,49 +336,17 @@
     "/xbox/new-game": {
       "post": {
         "description": "This POST route allows you to add a new game into the database",
-        "security": ["OAuth2"],
-        "parameters": [
-          {
-            "name": "gameId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "Game Name"
-                },
-                "Release": {
-                  "example": "2022"
-                },
-                "Director": {
-                  "example": "Director Name"
-                },
-                "Composer": {
-                  "example": "Composer Name"
-                },
-                "Series": {
-                  "example": "Series Name"
-                },
-                "Developer": {
-                  "example": "Developer Name"
-                },
-                "Genre": {
-                    "example": "Genre Name"
-                },
-                "Id": {
-                      "example": 4
-                }
-              }
-            }
+        "security": {
+          "OAuth2":[]
+        },
+        "requestBody":{
+          "description": "Example of req.body",
+          "required": "true",
+          "content": "application/json",
+          "schema":{
+            "$ref": "#/components/schemas/game"
           }
-        ],
+        },
         "responses": {
           "204": {
             "description": "You get a confirmation of the addition"
@@ -486,49 +363,25 @@
     "/xbox/update-game/{gameId}": {
       "put": {
         "description": "This PUT request allows you to edit an existing game",
-        "security": ["OAuth2"],
+        "security": {
+          "OAuth2":[]
+        },
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "Game Name"
-                },
-                "Release": {
-                  "example": "2022"
-                },
-                "Director": {
-                  "example": "Director Name"
-                },
-                "Composer": {
-                  "example": "Composer Name"
-                },
-                "Series": {
-                  "example": "Series Name"
-                },
-                "Developer": {
-                  "example": "Developer Name"
-                },
-                "Genre": {
-                    "example": "Genre Name"
-                },
-                "Id": {
-                      "example": 4
-                }
-              }
-            }
           }
         ],
+        "requestBody":{
+          "description": "Example of req.body",
+          "required": "true",
+          "content": "application/json",
+          "schema":{
+            "$ref": "#/components/schemas/game"
+          }
+        },
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
@@ -545,7 +398,9 @@
     "/xbox/delete-game/{gameId}": {
       "delete": {
         "description": "This DELETE route allows you to delete an existing game",
-        "security": ["OAuth2"],
+        "security": {
+          "OAuth2":[]
+        },
         "parameters": [
           {
             "name": "gameId",
@@ -567,5 +422,54 @@
         }
       }
     }
+  },
+  "definitions": {
+    "game": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "example": "Game Name"
+        },
+        "Release": {
+          "type": "string",
+          "example": "2022"
+        },
+        "Director": {
+          "type": "string",
+          "example": "Director Name"
+        },
+        "Composer": {
+          "type": "string",
+          "example": "Composer Name"
+        },
+        "Series": {
+          "type": "string",
+          "example": "Series Name"
+        },
+        "Developer": {
+          "type": "string",
+          "example": "Developer Name"
+        },
+        "Genre": {
+          "type": "string",
+          "example": "Genre Name"
+        },
+        "Id": {
+          "type": "integer",
+          "example": 4
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "This API uses OAuth 2 with the implicit grant flow.",
+      "flow": "implicit",
+      "authorizationUrl": "https://cse341-project2-gfhd.onrender.com/login",
+      "scopes": {}
+    }
   }
 }
+
