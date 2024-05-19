@@ -5,7 +5,6 @@ const errorHandler = require('../middleware/errorHandler');
 const validator = require('../middleware/validator');
 const authenticator = require('../middleware/authentication');
 
-
 router.get('/', errorHandler.CatchErrors(xboxController.getAll));
 router.get(
   '/find/:gameId',

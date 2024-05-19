@@ -14,13 +14,15 @@ router.use('/switch', switchRoutes);
 router.use('/playstation', playRoutes);
 router.use('/xbox', xboxRoutes);
 
-router.get('/login', passport.authenticate('github'), (req, res) =>{});
+router.get('/login', passport.authenticate('github'), (req, res) => {});
 
-router.get('/logout', function(req, res, next){
-    req.logout(function(error){
-        if(error) { return next(error);}
-        res.redirect('/');
-    });
+router.get('/logout', function (req, res, next) {
+  req.logout(function (error) {
+    if (error) {
+      return next(error);
+    }
+    res.redirect('/');
+  });
 });
 
 module.exports = router;

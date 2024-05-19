@@ -5,8 +5,7 @@ const errorHandler = require('../middleware/errorHandler');
 const validator = require('../middleware/validator');
 const authenticator = require('../middleware/authentication');
 
-router.get('/',
-errorHandler.CatchErrors(switchController.getAll));
+router.get('/', errorHandler.CatchErrors(switchController.getAll));
 router.get(
   '/find/:gameId',
   validator.gameSearchValidator(),
