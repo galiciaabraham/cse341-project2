@@ -47,6 +47,13 @@ app.get('/github/callback', passport.authenticate('github', {
     res.redirect('/');
   });
 
+app.get('/oauth/callback', passport.authenticate('github', {
+    failureRedirect: '/api-docs', session: false}),
+    (req, res) => {
+      req.session.user = req.user;
+      res.redirect('/');
+    });
+
   app.use('/', route);
 
 app.use(async (err, req, res, next) => {

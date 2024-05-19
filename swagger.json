@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Project 2 API - 8th generation videogames ",
-    "description": "This is an API that allows you to pull some information of games from the Nintentdo Switch, Playstation 4 and Xbox One consoles",
+    "title": "Project 2 API - 8th generation videogames",
+    "description": "This is an API that allows you to pull some information of games from the Nintendo Switch, Playstation 4 and Xbox One consoles",
     "version": "1.0.0"
   },
   "host": "cse341-project2-gfhd.onrender.com",
@@ -14,14 +14,14 @@
         "description": "This path will take you to the API documentation page",
         "responses": {
           "default": {
-            "description": "You'll see an UX interface created with Open API and Swagger"
+            "description": "You'll see a UX interface created with Open API and Swagger"
           }
         }
       }
     },
     "/login": {
       "get": {
-        "description": "This route will trigger the login process with OAuth to obtain authorizaiton to POST, PUT and DELETE routes.",
+        "description": "This route will trigger the login process with OAuth to obtain authorization to POST, PUT and DELETE routes.",
         "responses": {
           "default": {
             "description": "Once you're authenticated with your GitHub account you'll return to an empty page ready to answer to your requests."
@@ -55,7 +55,7 @@
     },
     "/switch/find/{gameId}": {
       "get": {
-        "description": "This GET route allows you to pull up a specific switch game based in its _id",
+        "description": "This GET route allows you to pull up a specific switch game based on its _id",
         "produces": ["application/json"],
         "parameters": [
           {
@@ -81,11 +81,11 @@
     "/switch/new-game": {
       "post": {
         "description": "This POST route allows you to add a new game into the database",
-        "security": [ 
+        "security": [
           {
-          "OAuth2":[]
+            "OAuth2": []
           }
-        ], 
+        ],
         "parameters": [
           {
             "in": "body",
@@ -113,25 +113,28 @@
     "/switch/update-game/{gameId}": {
       "put": {
         "description": "This PUT request allows you to edit an existing game",
-        "security": {
-          "OAuth2":[]
-        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Example of req.body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/game"
+            }
           }
         ],
-        "requestBody":{
-          "description": "Example of req.body",
-          "required": "true",
-          "content": "application/json",
-          "schema":{
-            "$ref": "#/components/schemas/game"
-          }
-        },
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
@@ -148,9 +151,11 @@
     "/switch/delete-game/{gameId}": {
       "delete": {
         "description": "This DELETE route allows you to delete an existing game",
-        "security": {
-          "OAuth2":[]
-        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
@@ -177,7 +182,7 @@
         "description": "This GET route allows you to pull up all the playstation games there are in the database",
         "produces": ["application/json"],
         "responses": {
-          "204": {
+          "200": {
             "description": "You get a JSON object with all the information from the collection"
           },
           "500": {
@@ -188,7 +193,7 @@
     },
     "/playstation/find/{gameId}": {
       "get": {
-        "description": "This GET route allows you to pull up a specific playstation game based in its _id",
+        "description": "This GET route allows you to pull up a specific playstation game based on its _id",
         "produces": ["application/json"],
         "parameters": [
           {
@@ -211,17 +216,22 @@
     "/playstation/new-game": {
       "post": {
         "description": "This POST route allows you to add a new game into the database",
-        "security": {
-          "OAuth2":[]
-        },
-        "requestBody":{
-          "description": "Example of req.body",
-          "required": "true",
-          "content": "application/json",
-          "schema":{
-            "$ref": "#/components/schemas/game"
+        "security": [
+          {
+            "OAuth2": []
           }
-        },
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Example of req.body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/game"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "You get a confirmation of the addition"
@@ -238,25 +248,28 @@
     "/playstation/update-game/{gameId}": {
       "put": {
         "description": "This PUT request allows you to edit an existing game",
-        "security": {
-          "OAuth2":[]
-        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Example of req.body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/game"
+            }
           }
         ],
-        "requestBody":{
-          "description": "Example of req.body",
-          "required": "true",
-          "content": "application/json",
-          "schema":{
-            "$ref": "#/components/schemas/game"
-          }
-        },
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
@@ -273,9 +286,11 @@
     "/playstation/delete-game/{gameId}": {
       "delete": {
         "description": "This DELETE route allows you to delete an existing game",
-        "security": {
-          "OAuth2":[]
-        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
@@ -313,7 +328,7 @@
     },
     "/xbox/find/{gameId}": {
       "get": {
-        "description": "This GET route allows you to pull up a specific xbox game based in its _id",
+        "description": "This GET route allows you to pull up a specific xbox game based on its _id",
         "produces": ["application/json"],
         "parameters": [
           {
@@ -336,17 +351,22 @@
     "/xbox/new-game": {
       "post": {
         "description": "This POST route allows you to add a new game into the database",
-        "security": {
-          "OAuth2":[]
-        },
-        "requestBody":{
-          "description": "Example of req.body",
-          "required": "true",
-          "content": "application/json",
-          "schema":{
-            "$ref": "#/components/schemas/game"
+        "security": [
+          {
+            "OAuth2": []
           }
-        },
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Example of req.body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/game"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "You get a confirmation of the addition"
@@ -363,25 +383,28 @@
     "/xbox/update-game/{gameId}": {
       "put": {
         "description": "This PUT request allows you to edit an existing game",
-        "security": {
-          "OAuth2":[]
-        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Example of req.body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/game"
+            }
           }
         ],
-        "requestBody":{
-          "description": "Example of req.body",
-          "required": "true",
-          "content": "application/json",
-          "schema":{
-            "$ref": "#/components/schemas/game"
-          }
-        },
         "responses": {
           "204": {
             "description": "You get a confirmation of the update"
@@ -398,9 +421,11 @@
     "/xbox/delete-game/{gameId}": {
       "delete": {
         "description": "This DELETE route allows you to delete an existing game",
-        "security": {
-          "OAuth2":[]
-        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
@@ -472,4 +497,3 @@
     }
   }
 }
-
